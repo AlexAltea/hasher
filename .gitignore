@@ -1,0 +1,8 @@
+# Dependencies NPM
+node_modules/
+
+# Visual Studio Code
+.vscode/
+
+# Hasher
+dist/
