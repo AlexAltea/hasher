@@ -13,6 +13,15 @@ module.exports = function (grunt) {
             app: 'app',
             dist: 'dist'
         },
+        browserify: {
+            dist: {
+                files: {
+                    '<%= path.dist %>/hasher.min.js': [
+                        '<%= path.app %>/scripts/**/*.js'
+                    ]
+                },
+            }
+        },
         htmlmin: {
             dist: {
                 options: {
@@ -40,7 +49,7 @@ module.exports = function (grunt) {
                 },
                 files: {
                     '<%= path.dist %>/hasher.min.js': [
-                        '<%= path.app %>/scripts/**/*.js'
+                        '<%= path.dist %>/hasher.min.js'
                     ]
                 }
             }
@@ -61,7 +70,7 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: '<%= path.app %>/scripts/**/*.js',
-                tasks: ['uglify']
+                tasks: ['browserify', 'uglify']
             },
             styles: {
                 files: '<%= path.app %>/styles/**/*.css',
@@ -73,9 +82,9 @@ module.exports = function (grunt) {
             },
             livereload: {
                 files: [
-                    'dist/*.html',
-                    'dist/*.css',
-                    'dist/*.js'
+                    '<%= path.dist %>/*.html',
+                    '<%= path.dist %>/*.css',
+                    '<%= path.dist %>/*.js'
                 ],
                 options: {
                     livereload: '<%= connect.options.livereload %>'
@@ -86,9 +95,10 @@ module.exports = function (grunt) {
 
     // Project tasks
     grunt.registerTask('build', [
+        'browserify',
         'htmlmin',
         'cssmin',
-        'uglify'
+        'uglify',
     ]);
     grunt.registerTask('serve', [
         'connect',

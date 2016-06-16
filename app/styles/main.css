@@ -1,9 +1,17 @@
 body {
 }
 
+/* Input */
+.hash-input .input-group {
+  font-family: 'Inconsolata';
+  font-size: 14px;
+  margin: 10px 40px 10px 0px;
+}
+
+/* Output */
 .hash-output {
   background-color: #fff;
-  padding: 10px 10px;
+  padding: 5px 10px;
   margin: 10px 0px;
 }
 
