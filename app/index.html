@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Hasher</title>
+
+    <!-- Dependencies -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata:400,700">
+
+    <!-- Hasher -->
+    <link rel="stylesheet" href="hasher.min.css">
+  </head>
+
+  <body>
+    <div class="container" data-ng-app="Hasher">
+      <div class="row">
+        <div class="col-md-4">
+          <h1>Hasher</h1>
+          <p>Automatic detection of hashing algorithms</p>
+        </div>
+
+        <div class="col-md-8" data-ng-controller="HasherController">
+          <h2>Input</h2>
+          <h2>Output</h2>
+          <div class="hash-output" ng-repeat="type in types">
+            <div class="row">
+              <div class="col-md-4">
+                <span class="hash-name">
+                  {{ type.name }}
+                </span>
+                <br />
+                <span>
+                  Hashcat: <code>{{ type.hashcat }}</code>
+                </span>
+              </div>
+              <div class="col-md-8">
+                <div class="input-group">
+                  <input type="text" class="form-control" ng-value="type.func()" readonly>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                      <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <footer class="container">
+        <p style="color: #666; font-weight: 300">&copy; Alexandro S&aacute;nchez Bach 2016.</p>
+      </footer>
+    </div>
+
+    <!-- Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Hasher -->
+    <script src="hasher.min.js"></script>
+  </body>
+</html>

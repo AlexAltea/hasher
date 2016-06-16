@@ -1,0 +1,18 @@
+body {
+}
+
+.hash-output {
+  background-color: #fff;
+  padding: 10px 10px;
+  margin: 10px 0px;
+}
+
+.hash-output .hash-name {
+  font-family: 'Inconsolata';
+  font-size: 20px;
+}
+
+.hash-output input {
+  font-family: 'Inconsolata';
+  font-size: 14px;
+}
