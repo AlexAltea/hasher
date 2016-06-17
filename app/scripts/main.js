@@ -2,6 +2,18 @@ var md5 = require('md5');
 var sha1 = require('sha1');
 var sha256 = require('sha256');
 
+// ClipboardJS
+var clipboard = new Clipboard('[data-clipboard-text]');
+clipboard.on('success', function(e) {
+    var tooltip = e.trigger.nextSibling;
+    if (tooltip && tooltip.hasAttribute('content')) {
+        var tooltipInner = tooltip.children[1];
+        var newLeft = (parseInt(tooltip.style.left, 10) + 27) + "px";
+        tooltip.style.left = newLeft;
+        tooltipInner.innerHTML = 'Copied!';
+    }
+});
+
 // AngularJS
 var H = angular.module('Hasher', ['ui.bootstrap']);
 
@@ -65,6 +77,7 @@ H.directive('hashOutput', function () {
         templateUrl: 'views/hash-output.html',
         restrict: 'E',
         scope: {
+            result: '=?',
             method: '=method'
         }
     };

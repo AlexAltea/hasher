@@ -10,9 +10,9 @@
   </div>
   <div class="col-md-8">
     <div class="input-group">
-      <input type="text" class="form-control" ng-value="method.func(pass.value, salt.value, user.value)" readonly>
+      <input type="text" class="form-control" ng-value="result" readonly>
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" uib-tooltip="Copy&nbsp;to&nbsp;clipboard" tooltip-placement="top" tooltip-popup-delay="300">
+        <button class="btn btn-default" type="button" data-clipboard-text="{{ result }}" uib-tooltip="Copy&nbsp;to&nbsp;clipboard" tooltip-placement="top" tooltip-popup-delay="300">
           <span class="octicon octicon-clippy"></span>
         </button>
       </span>

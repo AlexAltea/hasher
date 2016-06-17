@@ -2,11 +2,11 @@
   <span class="hash-input-name input-group-addon">{{ name }}</span>
   <input class="hash-input-value form-control" type="text" ng-model="field.value">
   <div class="input-group-btn">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Act {{passMode}} ion <span class="caret"></span></button>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ field.mode }}&nbsp;<span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li ng-click="passMode = 'A'"><a href="#">Plain-text</a></li>
-      <li ng-click="passMode = 'B'"><a href="#">Base64</a></li>
-      <li ng-click="passMode = 'X'"><a href="#">Hexadecimal</a></li>
+      <li ng-click="field.mode = 'A'"><a href="#">Plain-text</a></li>
+      <li ng-click="field.mode = 'B'"><a href="#">Base64</a></li>
+      <li ng-click="field.mode = 'X'"><a href="#">Hexadecimal</a></li>
     </ul>
   </div>
 </div>
