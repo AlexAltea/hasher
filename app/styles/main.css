@@ -1,9 +1,16 @@
-body {
+/* Bootstrap tweaks */
+.has-error .input-group-btn .btn.btn-default {
+  color: #a94442;
+  background-color: #ffffff;
+  border-color: #a94442;
+}
+.has-error .input-group-btn .btn.btn-default:hover {
+  background-color: #f2dede;
 }
 
 /* Input */
 .hash-input .input-group {
-  margin: 10px 40px 10px 0px;
+  margin: 10px 0px;
 }
 
 .hash-input-name,

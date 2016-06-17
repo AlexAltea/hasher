@@ -47,7 +47,7 @@
 
         <div class="col-md-8">
           <div class="hash-output" ng-repeat="method in methods | filterMethods:this">
-            <hash-output method="method" result="method.func(pass.value, salt.value, user.value)"></hash-output>
+            <hash-output method="method" result="method.func(pass.get(), salt.get(), user.get())"></hash-output>
           </div>
         </div>
       </div>
