@@ -3,17 +3,17 @@ var sha1 = require('sha1');
 var sha256 = require('sha256');
 
 // AngularJS
-var H = angular.module('Hasher', []);
+var H = angular.module('Hasher', ['ui.bootstrap']);
 
 H.controller('HasherController', ['$scope', function ($scope) {
     // Default
-    $scope.pass = "123456";
-    $scope.salt = "";
-    $scope.user = "";
-    $scope.hash = "";
+    $scope.pass = { value: "123456",  mode: "A" };
+    $scope.salt = { value: "",        mode: "A" };
+    $scope.user = { value: "",        mode: "A" };
+    $scope.hash = { value: "",        mode: "X" };
 
-    // Types
-	$scope.types = [{
+    // Methods
+	$scope.methods = [{
         name: 'MD5($pass)',
         func: function (n1) { return md5(n1); },
         hashcat: 0
@@ -23,7 +23,7 @@ H.controller('HasherController', ['$scope', function ($scope) {
         hashcat: 10
     }, {
         name: 'MD5(MD5(MD5($pass)))',
-        func: function (n1, n2) { return md5(md5(md5(n1))); },
+        func: function (n1) { return md5(md5(md5(n1))); },
         hashcat: 3500
     }, {
         name: 'MD5($pass.MD5($salt))',
@@ -47,3 +47,50 @@ H.controller('HasherController', ['$scope', function ($scope) {
         hashcat: 1410
     }];
 }]);
+
+// Directives
+H.directive('hashInput', function () {
+    return {
+        templateUrl: 'views/hash-input.html',
+        restrict: 'E',
+        scope: {
+            name: '@?',
+            field: '=field'
+        }
+    };
+});
+
+H.directive('hashOutput', function () {
+    return {
+        templateUrl: 'views/hash-output.html',
+        restrict: 'E',
+        scope: {
+            method: '=method'
+        }
+    };
+});
+
+// Filters
+H.filter('filterMethods', function () {
+    return function (methods, scope) {
+        return methods.filter(function (method) {
+            var tPass = scope.pass.value;
+            var tSalt = scope.salt.value;
+            var tUser = scope.user.value;
+
+            // Filter by used parameters
+            switch (method.func.length) {
+            case 3: if (!tPass || !tSalt || !tUser) { return false; } break;
+            case 2: if (!tPass || !tSalt ||  tUser) { return false; } break;
+            case 1: if (!tPass ||  tSalt ||  tUser) { return false; } break;
+            default:
+                return false;
+            }
+
+            // Filter by expected hash
+            var expectedHash = scope.user.value;
+            var resultingHash = method.func(tPass, tUser, tUser);
+            return (resultingHash.indexOf(expectedHash) > -1);
+        });
+    };
+});

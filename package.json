@@ -22,6 +22,7 @@
     "grunt-contrib-htmlmin": "^1.4.0",
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-mkdir": "^1.0.0",
     "load-grunt-tasks": "^1.0.0",
     "time-grunt": "^1.0.0"
   },

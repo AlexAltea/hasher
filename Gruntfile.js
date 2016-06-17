@@ -13,6 +13,13 @@ module.exports = function (grunt) {
             app: 'app',
             dist: 'dist'
         },
+        mkdir: {
+            dist: {
+                options: {
+                    create: ['dist/views']
+                }
+            }
+        },
         browserify: {
             dist: {
                 files: {
@@ -28,9 +35,10 @@ module.exports = function (grunt) {
                     removeComments: true,
                     collapseWhitespace: true
                 },
-                files: {
-                    '<%= path.dist %>/index.html': '<%= path.app %>/index.html',
-                }
+                expand: true,
+                cwd: '<%= path.app %>/',
+                src: ['**/*.html'],
+                dest: '<%= path.dist %>/'
             }
         },
         cssmin: {
@@ -95,6 +103,7 @@ module.exports = function (grunt) {
 
     // Project tasks
     grunt.registerTask('build', [
+        'mkdir',
         'browserify',
         'htmlmin',
         'cssmin',
@@ -102,9 +111,10 @@ module.exports = function (grunt) {
     ]);
     grunt.registerTask('serve', [
         'connect',
-        'watch'
+        'watch',
     ]);
     grunt.registerTask('default', [
-        'build'
+        'build',
+        'serve',
     ]);
 };

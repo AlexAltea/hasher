@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-4">
+    <span class="hash-name">
+      {{ method.name }}
+    </span>
+    <br />
+    <span>
+      Hashcat: <code>{{ method.hashcat }}</code>
+    </span>
+  </div>
+  <div class="col-md-8">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-value="method.func(pass.value, salt.value, user.value)" readonly>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" uib-tooltip="Copy&nbsp;to&nbsp;clipboard" tooltip-placement="top" tooltip-popup-delay="300">
+          <span class="octicon octicon-clippy"></span>
+        </button>
+      </span>
+    </div>
+  </div>
+</div>

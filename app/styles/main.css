@@ -3,9 +3,13 @@ body {
 
 /* Input */
 .hash-input .input-group {
+  margin: 10px 40px 10px 0px;
+}
+
+.hash-input-name,
+.hash-input-value {
   font-family: 'Inconsolata';
   font-size: 14px;
-  margin: 10px 40px 10px 0px;
 }
 
 /* Output */
