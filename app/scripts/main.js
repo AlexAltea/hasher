@@ -101,7 +101,7 @@ H.filter('filterMethods', function () {
             }
 
             // Filter by expected hash
-            var expectedHash = scope.user.value;
+            var expectedHash = scope.hash.value;
             var resultingHash = method.func(tPass, tUser, tUser);
             return (resultingHash.indexOf(expectedHash) > -1);
         });

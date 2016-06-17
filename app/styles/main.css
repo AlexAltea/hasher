@@ -14,9 +14,7 @@ body {
 
 /* Output */
 .hash-output {
-  background-color: #fff;
-  padding: 5px 0px;
-  margin: 10px 0px;
+  margin:  0px 0px 20px 0px;
 }
 
 .hash-output .hash-name {
