@@ -9,6 +9,7 @@
     "url": "https://github.com/AlexAltea/hasher.git"
   },
   "dependencies": {
+    "js-md4": "^0.3.0",
     "md5": "^2.1.0",
     "sha1": "^1.1.1",
     "sha256": "^0.2.0"
