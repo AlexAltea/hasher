@@ -16,7 +16,7 @@ To build Hasher, clone the *master* branch of this repository, and do the follow
 To automatically deploy Hasher to GitHub pages, push the files inside the `dist` folder to the `gh-pages` branch. To automatize this enter the following command in Windows/Powershell:
 ```
 $token = git subtree split --prefix dist master
-git push origin $token:gh-pages --force
+powershell -command "git push origin $($token):gh-pages --force"
 ```
 or in Linux:
 ```
