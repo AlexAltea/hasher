@@ -18,15 +18,15 @@ clipboard.on('success', function(e) {
 // Utils
 function stringToHex(str) {
     var hex = '';
-	for (var i = 0; i < str.length; i++)
-	    hex += ("00" + str.charCodeAt(i).toString(16)).slice(-2);
+    for (var i = 0; i < str.length; i++)
+        hex += ("00" + str.charCodeAt(i).toString(16)).slice(-2);
     return hex;
 }
 function hexToString(hex) {
     var str = '';
     hex = hex.replace(' ', '');
-	for (var i = 0; i < hex.length; i += 2)
-	    str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    for (var i = 0; i < hex.length; i += 2)
+        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
     return str;
 }
 
@@ -42,7 +42,7 @@ function HashInput (mode, value) {
             if (this.mode == 'X') { return hexToString(this.value); }
         } else {
             return '';
-	    }
+        }
     }
     this.valid = function () {
         switch (this.mode) {
@@ -76,7 +76,7 @@ H.controller('HasherController', ['$scope', function ($scope) {
     $scope.hash = new HashInput("X", "");
 
     // Methods
-	$scope.methods = [{
+    $scope.methods = [{
         name: 'MD5($pass)',
         func: function (p) { return md5(p); },
         hashcat: 0
@@ -187,7 +187,6 @@ H.directive('hashInput', function () {
         }
     };
 });
-
 H.directive('hashOutput', function () {
     return {
         templateUrl: 'views/hash-output.html',

@@ -1,3 +1,8 @@
+html {
+  overflow-y: scroll;
+  padding-bottom: 40px;
+}
+
 /* Bootstrap tweaks */
 .has-error .input-group-btn .btn.btn-default {
   color: #a94442;
